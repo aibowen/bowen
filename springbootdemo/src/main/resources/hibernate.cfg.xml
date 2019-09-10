@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:oracle:thin:@localhost:1521/pdborcl</property>
+        <property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="connection.username">risk</property>
+        <property name="connection.password">123</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>
+        <property name="hibernate.cache.provider_configuration_file_resource_path">/ehcache.xml</property>
+        <mapping class="com.example.hibernate.DueDiligence"/>
+        <!--
+        <property name="hibernate.show_sql">true</property>
+
+        DB schema will be updated if needed
+        <property name="hbm2ddl.auto">update</property>
+
+        <mapping class="com.hand.crla.app.model.Customer"/>
+        <mapping class="com.hand.crla.app.model.CustomerHistory"/>
+        <mapping class="com.hand.crla.app.model.ScoreDetail"/>
+        <mapping class="com.hand.crla.app.model.RiskItem"/>
+        <mapping class="com.hand.crla.app.model.Category"/>
+        <mapping class="com.hand.crla.app.model.Rule"/>
+        <mapping class="com.hand.crla.app.model.RiskIndex"/>
+        <mapping class="com.hand.crla.app.model.RiskAlgorithm"/>
+        <mapping class="com.hand.crla.profile.model.Institution"/>
+        <mapping class="com.hand.crla.app.model.ExternalSystem"/>
+        <mapping class="com.hand.crla.app.model.Scheme"/>
+        <mapping class="com.hand.crla.profile.model.User"/>
+        <mapping class="com.hand.crla.profile.model.Role"/>
+        <mapping class="com.hand.crla.profile.model.Operation"/>-->
+    </session-factory>
+
+</hibernate-configuration>

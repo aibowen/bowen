@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ehcache>
+    <!--缓存到硬盘的路径-->
+    <diskStore path="d:/ehcache"></diskStore>
+    <!--
+        默认设置
+        maxElementsInMemory：在内存中创建对象的最大数量
+        eternal：对象是否永远不变
+        timeIdleSeconds：可以操作对象的时间
+        timeToLiveSeconds：对象的生命周期
+        overflowToDisk：内存满了是否缓存到硬盘
+    -->
+    <defaultCache
+        maxElementsInMemory="100"
+        eternal="false"
+        timeToIdleSeconds="60"
+        timeToLiveSeconds="60"
+        overflowToDisk="true">
+    </defaultCache>
+    <cache name="sampleCache"
+        maxElementsInMemory="100"
+        eternal="false"
+        timeToIdleSeconds="60"
+        timeToLiveSeconds="60"
+        overflowToDisk="true">
+    </cache>
+</ehcache>

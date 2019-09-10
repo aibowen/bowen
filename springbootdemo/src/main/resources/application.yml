@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521/pdborcl
+    username: risk
+    password: 123
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/test?serverTimezone=GMT
+#    username: root
+#    password: 123456
+  security:
+    user:
+      name: zhanghui
+      password: 1116
+  cache:
+    caffeine:
+      spec: maxmumSize=200,expireAfterAcess=600
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://haasgz.hand-china.com:31306/test
+#    username: root
+#    password: handhand
+
+  main:
+    banner-mode: console
+
+server:
+  port: 8090
+mybatis-plus:
+  mapper-locations: classpath:persistence/*.xml
+  configuration:
+    local-cache-scope: session
+logging:
+  level:
+    root: INFO
+    org:
+      hibernate: ERROR
+
+
