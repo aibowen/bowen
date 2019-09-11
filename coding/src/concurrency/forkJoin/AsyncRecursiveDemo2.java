@@ -19,21 +19,21 @@ public class AsyncRecursiveDemo2 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		ForkJoinPool pool=new ForkJoinPool();
-		Task task=new Task("d:/Java/jdk1.8.0_111", "exe");
+		ForkJoinPool pool = new ForkJoinPool();
+		AsyncTask2 task = new AsyncTask2("d:/Java/jdk1.8.0_111", "exe");
 		
 		pool.execute(task);
 		
 		pool.shutdown();
-		List<String> list=task.join();
+		List<String> list = task.join();
 		System.out.println("共找到符合文件的数量"+list.size());
 	}
 
 }
 
-class Task extends RecursiveTask<List<String>>{
+class AsyncTask2 extends RecursiveTask<List<String>>{
 
-	public Task(String string, String string2) {
+	public AsyncTask2(String string, String string2) {
 		// TODO Auto-generated constructor stub
 	}
 
