@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @description:
  * @author: bowen.wei@hand-china.com
@@ -22,5 +25,14 @@ public class HelloController {
     @GetMapping("/hello")
     public String hello() {
         return helloService.hello();
+    }
+
+    @GetMapping("/list")
+    public List<String> list() {
+        List<String> list = new ArrayList<String>();
+        for (int i = 0; i <10 ; i++) {
+            list.add("num:" + i);
+        }
+        return list;
     }
 }
