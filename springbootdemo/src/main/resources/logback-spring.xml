@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
-    <contextName>demo</contextName>
+    <contextName>citi</contextName>
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{yyyy-MM-dd hh:mm:ss.SSS} %contextName [%thread] %-5level %logger{36}[%line] - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <root>
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/citi/citi.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/citi/citi.%d{yyyy-MM-dd_HH}.%i.log</fileNamePattern>
+            <maxHistory>5</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <charset>utf-8</charset>
+            <pattern>%d{yyyy-MM-dd hh:mm:ss.SSS} %contextName [%thread] %-5level %logger{36}[%line] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="DEBUG">
         <appender-ref ref="console"/>
     </root>
 

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true" dbms="mysql"/>
+    <property name="amount" value="decimal(20,2)"/>
+    <changeSet id="201910141103" author="bowen.wei" runAlways="false">
+        <createTable tableName="citi_test" remarks="测试表">
+            <column name="id" type="tinyint" remarks="主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_citi_test"/>
+            </column>
+            <column name="create_by" type="varchar(50)" remarks="创建人"/>
+            <column name="create_date" type="timestamp" defaultValue="${now}" remarks="创建日期"/>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="201910141129" author="bowen.wei">
+        <addColumn tableName="citi_test">
+            <column name="amount" type="${amount}" remarks="金额"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="201910141336" author="bowen.wei">
+        <createTable tableName="citi_user" remarks="用户表">
+            <column name="id" type="tinyint" remarks="主键">
+                <constraints nullable="false" primaryKeyName="pk_citi_user" primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(50)" remarks="用户名"/>
+            <column name="password" type="varchar(50)" remarks="密码"/>
+            <column name="is_disabled" type="varchar(1)" remarks="是否禁用"/>
+            <column name="email" type="varchar(50)" remarks="电子邮箱"/>
+            <column name="role_id" type="tinyint" remarks="角色"/>
+            <column name="fullname" type="varchar(50)" remarks="全名"/>
+            <column name="create_by" type="varchar(50)" remarks="创建人"/>
+            <column name="create_date" type="timestamp" defaultValue="${now}" remarks="创建日期"/>
+            <column name="update_by" type="varchar(50)" remarks="更新人"/>
+            <column name="update_date" type="timestamp" defaultValue="${now}" remarks="更新日期"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="201910141349" author="bowen.wei">
+        <createTable tableName="citi_operation" remarks="权限表">
+            <column name="id" type="tinyint" remarks="主键">
+                <constraints nullable="false" primaryKeyName="pk_citi_operation" primaryKey="true"/>
+            </column>
+            <column name="code" type="varchar(50)" remarks="编号"/>
+            <column name="description" type="varchar(100)" remarks="描述"/>
+            <column name="create_by" type="varchar(50)" remarks="创建人"/>
+            <column name="create_date" type="timestamp" defaultValue="${now}" remarks="创建日期"/>
+            <column name="update_by" type="varchar(50)" remarks="更新人"/>
+            <column name="update_date" type="timestamp" defaultValue="${now}" remarks="更新日期"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="201910141350" author="bowen.wei">
+        <createTable tableName="citi_role" remarks="角色表">
+            <column name="id" type="tinyint" remarks="主键">
+                <constraints nullable="false" primaryKeyName="pk_citi_role" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(50)" remarks="名称"/>
+            <column name="create_by" type="varchar(50)" remarks="创建人"/>
+            <column name="create_date" type="timestamp" defaultValue="${now}" remarks="创建日期"/>
+            <column name="update_by" type="varchar(50)" remarks="更新人"/>
+            <column name="update_date" type="timestamp" defaultValue="${now}" remarks="更新日期"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="201910141350001" author="bowen.wei">
+        <modifyDataType tableName="citi_role" columnName="id" newDataType="bigint"/>
+    </changeSet>
+
+    <!--<changeSet id="201910141350002" author="bowen.wei" >
+        <dropTable tableName="citi_role"/>
+    </changeSet>-->
+
+    <changeSet id="201910141350003" author="bowen.wei">
+        <addAutoIncrement tableName="citi_role" columnName="id" columnDataType="bigint"/>
+    </changeSet>
+
+    <changeSet id="201910141358" author="bowen.wei">
+        <createTable tableName="citi_role_operation" remarks="角色权限表">
+            <column name="role_id" type="tinyint" remarks="角色id"/>
+            <column name="operation_id" type="tinyint" remarks="权限id"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

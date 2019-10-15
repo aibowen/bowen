@@ -3,9 +3,22 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>Hello World!</title>
+    <title>query data</title>
 </head>
 <body>
-    <h1>Hello world!</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>编号</td>
+                <td>名称</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="test : ${testList}">
+                <td th:text="${test.id}"></td>
+                <td th:text="${test.name}"></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
